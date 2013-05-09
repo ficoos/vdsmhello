@@ -5,7 +5,7 @@ commands
 
 There will more more stuff when more features are added to the Java Bindings
 
-The program recieves an argument in the form of `tcp://&lt;ip&gt;:&lt;port&gt;`.
+The program recieves an argument in the form of `tcp://<ip>:<port>`.
 
 It will print the VDSM instance UUID when successful or an error when failing.
 
