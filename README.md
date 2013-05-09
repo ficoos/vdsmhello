@@ -27,6 +27,14 @@ Install apart from the regular VDSM rpms:
 
 Restart VDSM and you are all set
 
+The default port is 4044. To change the port you need to put the following in
+`vdsm.conf`. Make sure you have set up you firewall correctly.
+
+```ini
+[addresses]
+json_port = 4044
+```
+
 # How to get the Java Bindings
 You need the latest sources from the head of the
 [Java Bindings gerrit topic][json_rpc_r]
