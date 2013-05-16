@@ -9,7 +9,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 import org.ovirt.vdsm.VDSMClient;
 import org.ovirt.vdsm.VDSMClientPool;
 import org.ovirt.vdsm.VDSMResponse;
@@ -72,15 +71,8 @@ public class HelloVdsm {
 
 		VDSMClient.Host host = client.new Host();
 		Future<VDSMResponse<VdsmCapabilities>> call;
-		try {
-			call = host.getCapabilities(client.newID());
-		} catch (TimeoutException ex) {
-			// This happens if we can't even connect to the client.
-			// I'm thinking of getting this part out and just
-			// failing the call.
-			logger.log(Level.SEVERE, null, ex);
-			return;
-		}
+
+		call = host.getCapabilities(client.newID());
 		VDSMResponse<VdsmCapabilities> resp;
 		try {
 			resp = call.get(30, TimeUnit.SECONDS);
